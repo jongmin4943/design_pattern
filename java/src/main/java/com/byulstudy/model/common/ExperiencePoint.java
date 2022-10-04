@@ -12,7 +12,7 @@ public class ExperiencePoint {
         return new ExperiencePoint(DEFAULT_INIT_EXP);
     }
 
-    public static ExperiencePoint of(int exp) {
+    public static ExperiencePoint of(final int exp) {
         return new ExperiencePoint(exp);
     }
 
