@@ -17,7 +17,7 @@ public class GameController {
 
     public void start() {
         initGame();
-        while(this.character.isAlive()) {
+        while(canContinue()) {
             startStory();
         }
         output.printEnd();
@@ -28,6 +28,10 @@ public class GameController {
         String name = input.getInput();
         this.character = new Character(name);
         output.printStory(name);
+    }
+
+    private boolean canContinue() {
+        return this.character.isAlive() || this.character.isLevelMax();
     }
 
     private void startStory() {

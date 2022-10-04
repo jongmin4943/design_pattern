@@ -6,10 +6,10 @@ public class Goblin extends Monster {
 
     private static final String NAME = "고블린";
     private static final int EXP = 10;
-    static final int HP = 10;
+    private static final int HP = 10;
 
     public Goblin() {
-        super(NAME, EXP, HP, new GoblinAttackStrategy(), new GoblinDefendStrategy());
+        super(NAME, EXP, HP, new GoblinWeapon(), new GoblinArmor());
     }
 
 }

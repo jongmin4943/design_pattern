@@ -7,6 +7,6 @@ public class Troll extends Monster {
     private static final int EXP = 30;
     private static final int HP = 50;
     public Troll() {
-        super(NAME, EXP, HP, new TrollAttackStrategy(), new TrollDefendStrategy());
+        super(NAME, EXP, HP, new TrollWeapon(), new TrollArmor());
     }
 }

@@ -1,5 +1,5 @@
 package com.byulstudy.model.common;
 
-public interface DefendStrategy {
+public interface Defendable {
     int defend(final int damage);
 }

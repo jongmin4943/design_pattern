@@ -1,13 +1,17 @@
-package com.byulstudy.model.monster.goblin;
+package com.byulstudy.model.monster.troll;
 
-import com.byulstudy.model.common.DefendStrategy;
+import com.byulstudy.model.item.armor.Armor;
 import com.byulstudy.utils.RandomUtils;
 
-public class GoblinDefendStrategy implements DefendStrategy {
-
+public class TrollArmor extends Armor {
+    private static final String ARMOR_NAME = "철제 갑옷";
     private static final int MINIMUM_DAMAGE = 0;
     private static final int PROBABILITY = 10;
-    public static final int ARMOR = 2;
+    public static final int ARMOR = 5;
+
+    public TrollArmor() {
+        super(ARMOR_NAME);
+    }
 
     @Override
     public int defend(final int damage) {

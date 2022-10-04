@@ -8,6 +8,6 @@ public class Ogre extends Monster {
     private static final int HP = 20;
 
     public Ogre() {
-        super(NAME, EXP, HP,  new OgreAttackStrategy(), new OgreDefendStrategy());
+        super(NAME, EXP, HP,  new OgreWeapon(), new OgreArmor());
     }
 }

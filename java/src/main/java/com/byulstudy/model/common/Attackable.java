@@ -1,5 +1,5 @@
 package com.byulstudy.model.common;
 
-public interface AttackStrategy {
+public interface Attackable {
     int attack();
 }

@@ -1,4 +1,4 @@
-package com.byulstudy.model.common;
+package com.byulstudy.model.character;
 
 public class ExperiencePoint {
     private static final int DEFAULT_INIT_EXP = 0;
