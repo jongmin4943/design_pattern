@@ -5,7 +5,7 @@ import com.byulstudy.model.common.HealthPoint;
 import com.byulstudy.model.common.Level;
 import com.byulstudy.model.common.Name;
 
-public abstract class Character {
+public class Character {
     private final Name name;
     private Level level;
     private ExperiencePoint exp;
@@ -18,5 +18,9 @@ public abstract class Character {
         this.exp = ExperiencePoint.init();
         this.hp = HealthPoint.init();
         this.characterStatus = CharacterStatus.ALIVE;
+    }
+
+    public boolean isAlive() {
+        return characterStatus.isAlive();
     }
 }
