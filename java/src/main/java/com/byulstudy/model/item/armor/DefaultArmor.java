@@ -8,7 +8,12 @@ public class DefaultArmor extends Armor {
     }
 
     @Override
-    public int defend(int damage) {
-        return damage;
+    public int getDefense() {
+        return 0;
+    }
+
+    @Override
+    public int getDodgeProbability() {
+        return 10;
     }
 }
