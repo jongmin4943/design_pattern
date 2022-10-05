@@ -2,11 +2,10 @@ package com.byulstudy.model.monster.troll;
 
 import com.byulstudy.model.monster.Monster;
 
-public class Troll extends Monster {
-    private static final String NAME = "트롤";
-    private static final int EXP = 30;
-    private static final int HP = 50;
+import static com.byulstudy.model.monster.MonsterType.TROLL;
+
+public abstract class Troll extends Monster {
     public Troll() {
-        super(NAME, EXP, HP, new TrollWeapon(), new TrollArmor());
+        super(TROLL, new TrollWeapon(), new TrollArmor());
     }
 }

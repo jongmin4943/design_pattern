@@ -13,10 +13,10 @@ public abstract class Monster {
     protected Weapon weapon;
     protected Armor armor;
 
-    public Monster(final String name, final int hp, final int exp, final Weapon weapon, final Armor armor) {
-        this.name = new Name(name);
-        this.hp = HealthPoint.of(hp);
-        this.exp = ExperiencePoint.of(exp);
+    public Monster(final MonsterType monsterType, final Weapon weapon, final Armor armor) {
+        this.name = new Name(monsterType.getName());
+        this.hp = HealthPoint.of(monsterType.getHp());
+        this.exp = ExperiencePoint.of(monsterType.getExp());
         this.status = MonsterStatus.ALIVE;
         this.weapon = weapon;
         this.armor = armor;
@@ -38,11 +38,25 @@ public abstract class Monster {
     }
 
     private void checkMonsterAlive() {
-        if(this.status.isDie())
+        if(isDie())
             throw new IllegalStateException("이미 사망한 몬스터입니다.");
+    }
+
+    private boolean isDie() {
+        return this.status.isDie();
+    }
+
+    public boolean isAlive() {
+        return this.status.isAlive();
     }
 
     public ExperiencePoint getExp() {
         return this.exp;
     }
+
+    public String getName() {
+        return this.getFieldName() + this.name;
+    }
+
+    protected abstract String getFieldName();
 }
