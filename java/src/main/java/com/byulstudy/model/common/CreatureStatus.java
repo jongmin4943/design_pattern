@@ -1,6 +1,6 @@
-package com.byulstudy.model.character;
+package com.byulstudy.model.common;
 
-public enum CharacterStatus {
+public enum CreatureStatus {
     ALIVE, DIE;
 
     public boolean isAlive() {
@@ -10,5 +10,6 @@ public enum CharacterStatus {
     public boolean isDie() {
         return this.equals(DIE);
     }
+
 
 }

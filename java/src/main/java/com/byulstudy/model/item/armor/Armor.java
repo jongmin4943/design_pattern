@@ -17,6 +17,7 @@ public abstract class Armor extends Item implements Defendable {
         if(RandomUtils.getBooleanByPercentage(this.getDodgeProbability())) {
             return 0;
         }
-        return damage - this.getDefense();
+        int totalDamage = damage - this.getDefense();
+        return Math.max(totalDamage, 0);
     }
 }

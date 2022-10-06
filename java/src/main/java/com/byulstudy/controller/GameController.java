@@ -1,6 +1,10 @@
 package com.byulstudy.controller;
 
+import com.byulstudy.model.battlefield.BattleResult;
+import com.byulstudy.model.battlefield.Battlefield;
+import com.byulstudy.model.battlefield.Forest;
 import com.byulstudy.model.character.Character;
+import com.byulstudy.model.monster.RandomMonsterGenerator;
 import com.byulstudy.view.input.Input;
 import com.byulstudy.view.output.Output;
 
@@ -18,24 +22,29 @@ public class GameController {
     public void start() {
         initGame();
         while(canContinue()) {
-            startStory();
+            output.printStory(startStory());
         }
-        output.printEnd();
+        endGame();
     }
 
     private void initGame() {
-        output.printStart();
+        output.printAskName();
         String name = input.getInput();
         this.character = new Character(name);
-        output.printStory(name);
+        output.printStart(name);
+    }
+
+    private void endGame() {
+        output.printEnd();
     }
 
     private boolean canContinue() {
         return this.character.isAlive() || this.character.isLevelMax();
     }
 
-    private void startStory() {
-        System.out.println("사냥 ㄱ");
+    private BattleResult startStory() {
+        Battlefield battlefield = new Forest(character);
+        return battlefield.fight(RandomMonsterGenerator.generate());
     }
 
 }

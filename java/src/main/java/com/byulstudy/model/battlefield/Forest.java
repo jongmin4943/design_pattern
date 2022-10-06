@@ -1,5 +1,6 @@
 package com.byulstudy.model.battlefield;
 
+import com.byulstudy.model.character.Character;
 import com.byulstudy.model.monster.Monster;
 import com.byulstudy.model.monster.MonsterType;
 import com.byulstudy.model.monster.goblin.ForestGoblin;
@@ -9,6 +10,11 @@ import com.byulstudy.model.monster.troll.ForestTroll;
 public class Forest extends Battlefield {
 
     public static final String FIELD_NAME = "숲";
+
+    public Forest(final Character character) {
+        super(character);
+    }
+
     @Override
     protected Monster generateMonster(final MonsterType monsterType) {
         if(monsterType.isGoblin()) {

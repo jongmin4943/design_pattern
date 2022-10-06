@@ -5,8 +5,8 @@ import lombok.Getter;
 @Getter
 public enum MonsterType {
     GOBLIN("고블린",10,10),
-    OGRE("고블린",10,10),
-    TROLL("고블린",10,10);
+    OGRE("오우거",20,20),
+    TROLL("트롤",50,40);
 
     private final String name;
     private final int exp;
