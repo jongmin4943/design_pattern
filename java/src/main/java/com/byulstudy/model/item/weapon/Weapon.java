@@ -2,11 +2,14 @@ package com.byulstudy.model.item.weapon;
 
 import com.byulstudy.model.common.Attackable;
 import com.byulstudy.model.item.Item;
+import com.byulstudy.model.item.ItemType;
 import com.byulstudy.utils.RandomUtils;
+
+import static com.byulstudy.model.item.ItemType.WEAPON;
 
 public abstract class Weapon extends Item implements Attackable {
     public Weapon(final String name) {
-        super(name);
+        super(name, WEAPON);
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.byulstudy.model.battlefield;
 import com.byulstudy.model.character.Character;
 import com.byulstudy.model.monster.Monster;
 import com.byulstudy.model.monster.MonsterType;
+import com.byulstudy.utils.RandomUtils;
 
 public abstract class Battlefield {
     private final Character character;
@@ -37,5 +38,11 @@ public abstract class Battlefield {
     }
 
     protected abstract Monster generateMonster(final MonsterType monsterType);
+    public abstract String getFieldName();
 
+    public boolean run() {
+        boolean runProbability = RandomUtils.getBooleanByPercentage(30);
+        // TODO 도망 액션
+        return runProbability;
+    }
 }

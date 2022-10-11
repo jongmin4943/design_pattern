@@ -25,4 +25,10 @@ public class Dungeon extends Battlefield {
         }
         throw new IllegalArgumentException("존재하지 않는 몬스터 타입입니다. " + monsterType.getName());
     }
+
+    @Override
+    public String getFieldName() {
+        return FIELD_NAME;
+    }
+
 }
