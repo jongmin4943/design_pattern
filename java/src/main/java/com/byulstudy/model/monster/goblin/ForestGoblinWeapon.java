@@ -2,10 +2,10 @@ package com.byulstudy.model.monster.goblin;
 
 import com.byulstudy.model.item.weapon.Weapon;
 
-public class GoblinWeapon extends Weapon {
+public class ForestGoblinWeapon extends Weapon {
     private static final String WEAPON_NAME = "몽둥이";
 
-    public GoblinWeapon() {
+    public ForestGoblinWeapon() {
         super(WEAPON_NAME);
     }
 

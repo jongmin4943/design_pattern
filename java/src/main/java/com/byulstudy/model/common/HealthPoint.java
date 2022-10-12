@@ -15,8 +15,9 @@ public class HealthPoint {
 
     public HealthPoint add(final HealthPoint healthPoint) {
         final int estimateHp = this.hp + healthPoint.hp;
-        if(estimateHp > MAXIMUM_HP)
-            throw new IllegalArgumentException("hp 는 " + MAXIMUM_HP + "를 초과할 수 없습니다.");
+        if(estimateHp > MAXIMUM_HP){
+            return new HealthPoint(MAXIMUM_HP);
+        }
         return new HealthPoint(estimateHp);
     }
 

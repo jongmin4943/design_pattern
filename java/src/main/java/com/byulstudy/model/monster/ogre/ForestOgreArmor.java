@@ -1,17 +1,17 @@
-package com.byulstudy.model.monster.goblin;
+package com.byulstudy.model.monster.ogre;
 
 import com.byulstudy.model.item.armor.Armor;
 
-public class GoblinArmor extends Armor {
-    private static final String ARMOR_NAME = "거죽데기";
+public class ForestOgreArmor extends Armor {
+    public static final String ARMOR_NAME = "단단한 갑옷";
 
-    public GoblinArmor() {
+    public ForestOgreArmor() {
         super(ARMOR_NAME);
     }
 
     @Override
     public int getDefense() {
-        return 1;
+        return 3;
     }
 
     @Override

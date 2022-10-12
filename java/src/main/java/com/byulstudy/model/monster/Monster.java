@@ -2,17 +2,20 @@ package com.byulstudy.model.monster;
 
 import com.byulstudy.model.character.ExperiencePoint;
 import com.byulstudy.model.common.Creature;
+import com.byulstudy.model.item.Item;
 import com.byulstudy.model.item.armor.Armor;
 import com.byulstudy.model.item.weapon.Weapon;
 
 public abstract class Monster extends Creature {
-    private ExperiencePoint exp;
+    private final ExperiencePoint exp;
+    private final Item item;
 
-    public Monster(final MonsterType monsterType, final Weapon weapon, final Armor armor) {
+    public Monster(final MonsterType monsterType, final Weapon weapon, final Armor armor, final Item item) {
         super(monsterType.getName(), monsterType.getHp());
         this.exp = ExperiencePoint.of(monsterType.getExp());
         this.weapon = weapon;
         this.armor = armor;
+        this.item = item;
     }
 
 
@@ -26,4 +29,12 @@ public abstract class Monster extends Creature {
     }
 
     protected abstract String getFieldName();
+
+    public Item getItem() {
+        return this.item;
+    }
+
+    public boolean hasItem() {
+        return this.item != null;
+    }
 }

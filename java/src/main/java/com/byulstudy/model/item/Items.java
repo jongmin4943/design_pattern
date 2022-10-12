@@ -1,24 +1,33 @@
 package com.byulstudy.model.item;
 
-import com.byulstudy.model.item.weapon.Weapon;
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import static com.byulstudy.model.item.ItemType.WEAPON;
-
-public abstract class Items {
+public class Items {
     private final List<Item> items;
 
     public Items() {
         this.items = new ArrayList<>();
     }
 
-    public List<Weapon> getWeapons() {
-        return items.stream().filter(item -> item.isType(WEAPON)).map(Weapon.class::cast).collect(Collectors.toList());
+    public Item get(final int i) {
+        return this.items.get(i);
     }
-    public Weapon get(final int i) {
-        return getWeapons().get(i);
+
+    public void add(final Item... items) {
+        this.items.addAll(Arrays.asList(items));
+    }
+
+    public void remove(final Item item) {
+        this.items.remove(item);
+    }
+
+    public boolean isEmpty() {
+        return this.items.isEmpty();
+    }
+
+    public int size() {
+        return this.items.size();
     }
 }

@@ -9,12 +9,12 @@ public class RandomUtils {
         return RANDOM.nextInt(inclusiveBegin, exclusiveEnd);
     }
 
-    public static boolean getBooleanByPercentage(final int percentage) {
+    public static boolean getBooleanByPercentage(final double percentage) {
         validatePercentage(percentage);
-        return Math.random() < (double) percentage / 100;
+        return Math.random() <  percentage / 100;
     }
 
-    private static void validatePercentage(final int percentage) {
+    private static void validatePercentage(final double percentage) {
         if (percentage < 0 || percentage > 100) {
             throw new IllegalArgumentException("percentage must be less than 100 and greater than 0");
         }

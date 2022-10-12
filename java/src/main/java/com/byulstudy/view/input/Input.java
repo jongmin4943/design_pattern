@@ -5,9 +5,17 @@ import java.util.Scanner;
 public class Input {
     private static final String NUMBER_REGEX = "[0-9]+";
     private final Scanner scanner;
+    private static Input input;
 
-    public Input() {
+    private Input() {
         this.scanner = new Scanner(System.in);
+    }
+
+    public static Input getInstance() {
+        if(input == null) {
+            input = new Input();
+        }
+        return input;
     }
 
     public String getInput() {

@@ -43,14 +43,6 @@ public abstract class Creature {
         }
     }
 
-    public void changeWeapon(Weapon weapon) {
-        this.weapon = weapon;
-    }
-
-    public void changeArmor(Armor armor) {
-        this.armor = armor;
-    }
-
     public abstract String getName();
 
     private void checkAlive() {

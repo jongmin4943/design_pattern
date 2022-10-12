@@ -1,17 +1,17 @@
-package com.byulstudy.model.monster.ogre;
+package com.byulstudy.model.monster.troll;
 
 import com.byulstudy.model.item.armor.Armor;
 
-public class OgreArmor extends Armor {
-    public static final String ARMOR_NAME = "단단한 갑옷";
+public class ForestTrollArmor extends Armor {
+    private static final String ARMOR_NAME = "철제 갑옷";
 
-    public OgreArmor() {
+    public ForestTrollArmor() {
         super(ARMOR_NAME);
     }
 
     @Override
     public int getDefense() {
-        return 3;
+        return 5;
     }
 
     @Override

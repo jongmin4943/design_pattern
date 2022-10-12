@@ -1,16 +1,24 @@
 package com.byulstudy.view.output;
 
-import com.byulstudy.model.battlePhase.Step;
+import com.byulstudy.model.battlePhase.PhaseType;
 import com.byulstudy.model.battlefield.BattleResult;
 import com.byulstudy.model.battlefield.BattleStory;
 import com.byulstudy.model.item.Item;
-
-import java.util.List;
+import com.byulstudy.model.item.Items;
 
 import static com.byulstudy.view.output.OutputEnum.END_MESSAGE;
 import static com.byulstudy.view.output.OutputEnum.START_MESSAGE;
 
 public class Output {
+    private static Output output;
+    private Output() {}
+
+    public static Output getInstance() {
+        if(output == null) {
+            output = new Output();
+        }
+        return output;
+    }
     public void printAskName() {
         System.out.print(START_MESSAGE.text());
     }
@@ -36,20 +44,32 @@ public class Output {
         }
         if(battleResult.isWinnerCharacter()) {
             builder.append(battleResult.getCharacterName()).append("(이)가 ").append(battleResult.getMonsterName()).append("를 처치!").append("\n");
+            String gainedItem = battleResult.getGainedItem();
+            String gainedExp = battleResult.getGainedExp();
+            if(gainedItem != null) {
+                builder.append(gainedItem).append("획득!!").append("\n");
+            }
+            if(gainedExp != null) {
+                builder.append(gainedExp).append("경험치를 획득하셨습니다.").append("\n");
+            }
+            if(battleResult.isLevelUp()) {
+                builder.append("레벨업!!").append("\n");
+            }
         } else {
             builder.append(battleResult.getCharacterName()).append("(이)가 ").append(battleResult.getMonsterName()).append("에게 패배 하였습니다!").append("\n");
         }
+
         System.out.println(builder);
     }
 
-    public void printSelection(final Step step) {
-        if(step.isStandby()) {
+    public void printPhase(final PhaseType phaseType) {
+        if(phaseType.isStandby()) {
             System.out.println("1. 모험\t 2. 치료\t 3. 무기교체\t 4. 게임종료");
         }
-        if(step.isStory()) {
+        if(phaseType.isStory()) {
             System.out.println("1. 검은 숲으로\t 2. 미궁의 던전으로\t 3. 정체불명\t 4. 뒤로");
         }
-        if(step.isBattle()) {
+        if(phaseType.isBattle()) {
             System.out.println("1. 공격\t 2. 무기교체\t 3. 대화시도\t 4. 도망가기");
         }
     }
@@ -58,14 +78,14 @@ public class Output {
         System.out.println(name + "의 체력이 " + healAmount + " 회복되었습니다");
     }
 
-    public <T extends Item> void printItems(final List<T> weapons) {
-        if(weapons.size() == 0) {
+    public void printItems(final Items items) {
+        if(items.isEmpty()) {
             System.out.println("아이템이 없습니다.");
             return;
         }
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < weapons.size(); i++) {
-            builder.append(i+1).append(". ").append(weapons.get(i).getName()).append("\t");
+        for (int i = 0; i < items.size(); i++) {
+            builder.append(i+1).append(". ").append(items.get(i).getName()).append("\t");
         }
         System.out.println(builder);
     }
@@ -74,16 +94,19 @@ public class Output {
         System.out.println(fieldName + " 탐험을 시작합니다.");
     }
 
-    public void talkWithMonster() {
-        System.out.println("대화를 시도합니다.");
-        System.out.println("대화에 실패했습니다.");
+    public void printChangeItem(final Item selectedItem) {
+        System.out.println(selectedItem.getName() + "을(를) 장착하셨습니다.");
     }
 
-    public void printRunSuccess() {
-        System.out.println("도망치는데 성공했습니다.");
+    public void printCharacterDie() {
+        System.out.println("캐릭터가 사망하셨습니다.");
     }
 
-    public void printRunFail() {
-        System.out.println("도망치는데 실패하셨습니다.");
+    public void printPlayAgain() {
+        System.out.println("게임을 다시 시작하시겠습니까? 1) 재시작\t 2) 종료");
+    }
+
+    public void printEnding(final String name) {
+        System.out.println(name + "이 세상의 평화를 가져왔습니다.");
     }
 }

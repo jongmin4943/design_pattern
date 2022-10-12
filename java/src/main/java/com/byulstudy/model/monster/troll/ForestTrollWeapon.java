@@ -2,10 +2,10 @@ package com.byulstudy.model.monster.troll;
 
 import com.byulstudy.model.item.weapon.Weapon;
 
-public class TrollWeapon extends Weapon {
+public class ForestTrollWeapon extends Weapon {
     private static final String WEAPON_NAME = "거대 몽둥이";
 
-    public TrollWeapon() {
+    public ForestTrollWeapon() {
         super(WEAPON_NAME);
     }
 
