@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StandbyStep implements Phase {
+    private static StandbyStep standbyStep;
     private final Map<Integer, Step> steps = new HashMap<>();
 
     public StandbyStep() {
@@ -13,6 +14,13 @@ public class StandbyStep implements Phase {
         steps.put(4, Step.EXIT);
     }
 
+    public static Phase getInstance() {
+        if(standbyStep == null) {
+            standbyStep = new StandbyStep();
+        }
+        return standbyStep;
+    }
+
     @Override
     public Step selectedStep(int selection) {
         return this.steps.get(selection);
@@ -20,12 +28,12 @@ public class StandbyStep implements Phase {
 
     @Override
     public Phase next() {
-        return Phases.getInstance().get(PhaseType.STORY);
+        return StoryStep.getInstance();
     }
 
     @Override
     public Phase prev() {
-        return Phases.getInstance().get(PhaseType.STANDBY);
+        return getInstance();
     }
 
     @Override

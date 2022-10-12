@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StoryStep implements Phase {
+    private static StoryStep storyStep;
     private final Map<Integer, Step> steps = new HashMap<>();
 
     public StoryStep() {
@@ -13,6 +14,13 @@ public class StoryStep implements Phase {
         steps.put(4, Step.BACK);
     }
 
+    public static Phase getInstance() {
+        if(storyStep == null) {
+            storyStep = new StoryStep();
+        }
+        return storyStep;
+    }
+
     @Override
     public Step selectedStep(int selection) {
         return this.steps.get(selection);
@@ -20,12 +28,12 @@ public class StoryStep implements Phase {
 
     @Override
     public Phase next() {
-        return Phases.getInstance().get(PhaseType.BATTLE);
+        return BattleStep.getInstance();
     }
 
     @Override
     public Phase prev() {
-        return Phases.getInstance().get(PhaseType.STANDBY);
+        return StandbyStep.getInstance();
     }
 
     @Override

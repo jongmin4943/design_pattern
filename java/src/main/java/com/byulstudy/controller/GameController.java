@@ -79,13 +79,13 @@ public class GameController {
 
     private void processStep(Step step) {
         if (step.isStandby()) {
-            phase = new StandbyStep();
+            phase = StandbyStep.getInstance();
         }
         if (step.isStory()) {
-            phase = new StoryStep();
+            phase = StoryStep.getInstance();
         }
         if (step.isBattle()) {
-            phase = new BattleStep();
+            phase = BattleStep.getInstance();
         }
         if (step.isHeal()) {
             output.printHeal(character.getName(), character.heal(20));
