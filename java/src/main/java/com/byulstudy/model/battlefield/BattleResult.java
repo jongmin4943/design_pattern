@@ -1,7 +1,7 @@
 package com.byulstudy.model.battlefield;
 
 import com.byulstudy.model.character.Character;
-import com.byulstudy.model.character.ExperiencePoint;
+import com.byulstudy.model.common.ExperiencePoint;
 import com.byulstudy.model.item.Item;
 import com.byulstudy.model.monster.Monster;
 
@@ -65,5 +65,9 @@ public class BattleResult {
 
     public boolean isLevelUp() {
         return levelUp;
+    }
+
+    public String getCharacterLevel() {
+        return this.character.getLevel();
     }
 }

@@ -11,7 +11,7 @@ public class DungeonTrollArmor extends Armor {
 
     @Override
     public int getDefense() {
-        return 5;
+        return 4;
     }
 
     @Override

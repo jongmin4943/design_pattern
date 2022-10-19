@@ -1,7 +1,9 @@
 package com.byulstudy.model.battlefield;
 
 import com.byulstudy.model.character.Character;
+import com.byulstudy.model.common.ExperiencePoint;
 import com.byulstudy.model.monster.Monster;
+import com.byulstudy.model.monster.MonsterExperiencePoint;
 import com.byulstudy.model.monster.MonsterType;
 import com.byulstudy.model.monster.goblin.DungeonGoblin;
 import com.byulstudy.model.monster.ogre.DungeonOgre;
@@ -9,6 +11,7 @@ import com.byulstudy.model.monster.troll.DungeonTroll;
 
 public class Dungeon extends Battlefield {
     public static final String FIELD_NAME = "던전";
+    public static final int FIELD_EXP = 20;
 
     public Dungeon(final Character character) {
         super(character);
@@ -29,6 +32,11 @@ public class Dungeon extends Battlefield {
     @Override
     public String getFieldName() {
         return FIELD_NAME;
+    }
+
+    @Override
+    public ExperiencePoint getFieldExtraExp() {
+        return new MonsterExperiencePoint(FIELD_EXP);
     }
 
 }

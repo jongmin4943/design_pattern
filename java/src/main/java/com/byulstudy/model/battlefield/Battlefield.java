@@ -1,7 +1,7 @@
 package com.byulstudy.model.battlefield;
 
 import com.byulstudy.model.character.Character;
-import com.byulstudy.model.character.ExperiencePoint;
+import com.byulstudy.model.common.ExperiencePoint;
 import com.byulstudy.model.item.Item;
 import com.byulstudy.model.monster.Monster;
 import com.byulstudy.model.monster.MonsterType;
@@ -32,7 +32,7 @@ public abstract class Battlefield {
             battleResult.addStory(new BattleStory(monster.getName(), character.getName(), damagePoint, character.getHp()));
         }
         if(battleResult.isWinnerCharacter()) {
-            ExperiencePoint exp = monster.getExp();
+            ExperiencePoint exp = monster.getExp(this);
             boolean isLevelUp = character.gainExp(exp);
             if(monster.hasItem()) {
                 Item item = monster.getItem();
@@ -51,4 +51,5 @@ public abstract class Battlefield {
 
     protected abstract Monster generateMonster(final MonsterType monsterType);
     public abstract String getFieldName();
+    public abstract ExperiencePoint getFieldExtraExp();
 }

@@ -2,9 +2,10 @@ package com.byulstudy.model.item;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
-public class Items {
+public class Items implements Iterable<Item> {
     private final List<Item> items;
 
     public Items() {
@@ -29,5 +30,10 @@ public class Items {
 
     public int size() {
         return this.items.size();
+    }
+
+    @Override
+    public Iterator<Item> iterator() {
+        return this.items.iterator();
     }
 }

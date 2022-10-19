@@ -55,6 +55,7 @@ public class Output {
             if(battleResult.isLevelUp()) {
                 builder.append("레벨업!!").append("\n");
             }
+            builder.append(battleResult.getCharacterLevel()).append("\n");
         } else {
             builder.append(battleResult.getCharacterName()).append("(이)가 ").append(battleResult.getMonsterName()).append("에게 패배 하였습니다!").append("\n");
         }
@@ -75,7 +76,11 @@ public class Output {
     }
 
     public void printHeal(final String name, final int healAmount) {
-        System.out.println(name + "의 체력이 " + healAmount + " 회복되었습니다");
+        if(healAmount > 0) {
+            System.out.println(name + "의 체력이 " + healAmount + " 회복되었습니다");
+        } else {
+            System.out.println("이미 최대 체력입니다.");
+        }
     }
 
     public void printItems(final Items items) {
@@ -84,8 +89,9 @@ public class Output {
             return;
         }
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < items.size(); i++) {
-            builder.append(i+1).append(". ").append(items.get(i).getName()).append("\t");
+        int cnt = 1;
+        for (Item item:items) {
+            builder.append(cnt++).append(". ").append(item.getName()).append("\t");
         }
         System.out.println(builder);
     }

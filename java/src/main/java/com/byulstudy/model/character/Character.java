@@ -1,6 +1,7 @@
 package com.byulstudy.model.character;
 
 import com.byulstudy.model.common.Creature;
+import com.byulstudy.model.common.ExperiencePoint;
 import com.byulstudy.model.common.HealthPoint;
 import com.byulstudy.model.item.Item;
 import com.byulstudy.model.item.Items;
@@ -68,5 +69,9 @@ public class Character extends Creature {
         if(selectedItem instanceof Armor) {
             this.changeArmor((Armor) selectedItem);
         }
+    }
+
+    public String getLevel() {
+        return this.level.toString();
     }
 }

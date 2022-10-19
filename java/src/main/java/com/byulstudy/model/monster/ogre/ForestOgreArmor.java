@@ -11,7 +11,7 @@ public class ForestOgreArmor extends Armor {
 
     @Override
     public int getDefense() {
-        return 3;
+        return 2;
     }
 
     @Override
