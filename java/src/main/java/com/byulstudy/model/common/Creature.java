@@ -38,8 +38,9 @@ public abstract class Creature {
             return damagePoint;
         } catch (IllegalArgumentException e) {
             this.creatureStatus = CreatureStatus.DIE;
+            int remainedHp = this.hp.getHp();
             this.hp = HealthPoint.Zero;
-            return this.hp.getHp();
+            return remainedHp;
         }
     }
 
