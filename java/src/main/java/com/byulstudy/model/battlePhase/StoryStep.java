@@ -1,13 +1,10 @@
 package com.byulstudy.model.battlePhase;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public class StoryStep implements Phase {
+public class StoryStep extends Phase {
     private static StoryStep storyStep;
-    private final Map<Integer, Step> steps = new HashMap<>();
 
     public StoryStep() {
+        super(PhaseType.STORY);
         steps.put(1, Step.MOVE_FOREST);
         steps.put(2, Step.MOVE_DUNGEON);
         steps.put(3, Step.MOVE_RANDOM);
@@ -15,15 +12,10 @@ public class StoryStep implements Phase {
     }
 
     public static Phase getInstance() {
-        if(storyStep == null) {
+        if (storyStep == null) {
             storyStep = new StoryStep();
         }
         return storyStep;
-    }
-
-    @Override
-    public Step selectedStep(int selection) {
-        return this.steps.get(selection);
     }
 
     @Override
@@ -34,10 +26,5 @@ public class StoryStep implements Phase {
     @Override
     public Phase prev() {
         return StandbyStep.getInstance();
-    }
-
-    @Override
-    public PhaseType current() {
-        return PhaseType.STORY;
     }
 }

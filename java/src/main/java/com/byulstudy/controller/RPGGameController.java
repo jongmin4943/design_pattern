@@ -71,7 +71,7 @@ public class RPGGameController implements GameController {
     private void processPhase() {
         try {
             output.printPhase(phase.current());
-            Step step = phase.selectedStep(input.getNumberInputInRange(1, 5));
+            Step step = phase.selectStep(input.getNumberInputInRange(1, 5));
             processStep(step);
         } catch (NumberFormatException e) {
             processPhase();

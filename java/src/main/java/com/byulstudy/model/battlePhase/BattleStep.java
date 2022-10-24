@@ -1,14 +1,10 @@
 package com.byulstudy.model.battlePhase;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public class BattleStep implements Phase {
+public class BattleStep extends Phase {
     private static BattleStep battleStep;
-    private final Map<Integer, Step> steps = new HashMap<>();
 
     private BattleStep() {
-        // FIXME 미구현
+        super(PhaseType.BATTLE);
 //        steps.put(1, Step.ATTACK);
 //        steps.put(2, Step.CHANGE_WEAPON);
 //        steps.put(3, Step.TALK);
@@ -16,15 +12,10 @@ public class BattleStep implements Phase {
     }
 
     public static BattleStep getInstance() {
-        if(battleStep == null) {
+        if (battleStep == null) {
             battleStep = new BattleStep();
         }
         return battleStep;
-    }
-
-    @Override
-    public Step selectedStep(int selection) {
-        return this.steps.get(selection);
     }
 
     @Override
@@ -35,11 +26,6 @@ public class BattleStep implements Phase {
     @Override
     public Phase prev() {
         return StoryStep.getInstance();
-    }
-
-    @Override
-    public PhaseType current() {
-        return PhaseType.BATTLE;
     }
 
 }
