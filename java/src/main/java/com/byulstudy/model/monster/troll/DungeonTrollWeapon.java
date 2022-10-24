@@ -11,11 +11,11 @@ public class DungeonTrollWeapon extends Weapon {
 
     @Override
     public int getDamage() {
-        return 12;
+        return 8;
     }
 
     @Override
     public int getCriticalProbability() {
-        return 20;
+        return 12;
     }
 }
