@@ -1,7 +1,7 @@
 package com.byulstudy.model.battlePhase;
 
 public enum PhaseType {
-    STANDBY, STORY, BATTLE;
+    STANDBY, STORY, BATTLE, EXIT;
 
     public boolean isStandby() {
         return this.equals(STANDBY);
@@ -13,5 +13,9 @@ public enum PhaseType {
 
     public boolean isBattle() {
         return this.equals(BATTLE);
+    }
+
+    public boolean isExit() {
+        return this.equals(EXIT);
     }
 }
