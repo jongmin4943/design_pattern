@@ -1,6 +1,6 @@
-package com.byulstudy.model.battlePhase;
+package com.byulstudy.controller;
 
-public enum PhaseType {
+public enum ControllerType {
     STANDBY, STORY, BATTLE, EXIT;
 
     public boolean isStandby() {

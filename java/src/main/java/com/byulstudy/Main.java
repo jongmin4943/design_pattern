@@ -1,11 +1,11 @@
 package com.byulstudy;
 
-import com.byulstudy.controller.GameController;
-import com.byulstudy.controller.RPGGameController;
+import com.byulstudy.application.Game;
+import com.byulstudy.application.RPGGame;
 
 public class Main {
     public static void main(String[] args) {
-        GameController gameController = new RPGGameController();
-        gameController.start();
+        Game game = new RPGGame();
+        game.start();
     }
 }

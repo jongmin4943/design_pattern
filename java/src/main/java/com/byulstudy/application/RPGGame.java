@@ -1,21 +1,23 @@
-package com.byulstudy.controller;
+package com.byulstudy.application;
 
-import com.byulstudy.model.battlePhase.Phase;
+import com.byulstudy.controller.FrontController;
 import com.byulstudy.model.character.Character;
+import com.byulstudy.view.input.ConsoleInput;
 import com.byulstudy.view.input.Input;
+import com.byulstudy.view.output.ConsoleOutput;
 import com.byulstudy.view.output.Output;
 
-public class RPGGameController implements GameController {
+public class RPGGame implements Game {
     private final Input input;
     private final Output output;
 
     private Character character;
-    private Phase phase;
+    private FrontController controller;
     private boolean running;
 
-    public RPGGameController() {
-        this.input = Input.getInstance();
-        this.output = Output.getInstance();
+    public RPGGame() {
+        this.input = ConsoleInput.getInstance();
+        this.output = ConsoleOutput.getInstance();
     }
 
     @Override
@@ -30,28 +32,28 @@ public class RPGGameController implements GameController {
 
     private void initGame() {
         this.running = true;
-        output.printAskName();
-        String name = input.getInput();
+        output.askName();
+        String name = input.get();
         this.character = new Character(name);
-        output.printStart(name);
-        phase = new Phase(input, output, character);
+        output.start(name);
+        controller = new FrontController(input, output, character);
     }
 
     private void endGame() {
         if (this.character.isDie()) {
-            output.printCharacterDie();
+            output.characterDie();
         }
         if (this.character.isLevelMax()) {
-            output.printEnding(character.getName());
+            output.achieve(character.getName());
         }
-        output.printEnd();
+        output.end();
     }
 
     private void replay() {
         if(!running) return;
         try {
-            output.printPlayAgain();
-            int numberInputInRange = input.getNumberInputInRange(1, 3);
+            output.playAgain();
+            int numberInputInRange = input.getNumberInRange(1, 3);
             if (numberInputInRange == 1) {
                 start();
             }
@@ -62,8 +64,8 @@ public class RPGGameController implements GameController {
 
     private void processPhase() {
         try {
-            output.printPhase(phase.current());
-            this.running = phase.processSelection(input.getNumberInputInRange(1, 5));
+            output.select(controller.current());
+            this.running = controller.process(input.getNumber());
         } catch (NumberFormatException e) {
             processPhase();
         }
